@@ -2,40 +2,29 @@ using namespace std;
 
 // 23:01:00:11:12:19
 
-#include "time-corrector.h"
+#include <TIME_CORRECTOR.h>
 
 TIME_CORRECTOR *TIME = new TIME_CORRECTOR(&Serial);
+
+// хранит данные при наличии основного питания или от батареи
+const byte ramAddress = 10;
+const byte ramValue   = 150;
 
 void setup() {
   Serial.begin(9600);
   TIME->begin();
 
-// хранит данные при наличии основного питания или от батареи
-    //TIME->writeByteInRam(10, 150);
+  //TIME->writenvram(ramAddress, ramValue);
 }
 
 void loop() {
+  // Y-m-d H:i:s
+  // 20-05-09 21:30:24
   TIME->correct();
 
-  DateTime now = TIME->now();
+  TIME->printCurrent();
 
-  Serial.print(now.hour(), DEC);
-  Serial.print(':');
-  Serial.print(now.minute(), DEC);
-  Serial.print(':');
-  Serial.print(now.second(), DEC);
-  Serial.print(' ');
-  Serial.print(now.year(), DEC);
-  Serial.print('/');
-  Serial.print(now.month(), DEC);
-  Serial.print('/');
-  Serial.print(now.day(), DEC);
-  Serial.print(" (");
-  Serial.print(now.dayOfWeek(), DEC);
-  Serial.print(')');
-  Serial.println();
-
-  //Serial.println(TIME->readByteInRam(10));
+  //Serial.println(TIME->readnvram(ramAddress));
 
   delay(1000);
 }

@@ -1,27 +1,33 @@
 {
-    "name": "SF_TIME_CORRECTOR", 
-    "description": "RTC corrector from Serial", 
-    "keywords": "RTC, Corrector, Serial", 
+    "name": "SF_TIME_CORRECTOR",
+    "description": "RTC corrector from Serial",
+    "keywords": "RTC, Corrector, Serial",
     "version": "1.0.0",
     "repository": {
-        "url": "https://github.com/singleSf/mc-library-time-corrector", 
+        "url": "https://github.com/singleSf/mc-library-time-corrector",
         "type": "git"
-    }, 
+    },
     "platforms": [
-        "atmelavr", 
-        "atmelmegaavr", 
-        "espressif32", 
-        "espressif8266", 
-        "ststm32", 
-        "ststm8" 
-    ], 
+        "atmelavr",
+        "atmelmegaavr",
+        "espressif32",
+        "espressif8266",
+        "ststm32",
+        "ststm8"
+    ],
     "authors": [
         {
             "name": "Sergey Badulin",
             "maintainer": true
         }
-    ], 
+    ],
     "frameworks": [
         "arduino"
+    ],
+    "dependencies": [
+        {
+            "name": "RTClib",
+            "version": "git@github.com:adafruit/RTClib.git#1.4.1"
+        }
     ]
 }
