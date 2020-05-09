@@ -46,13 +46,6 @@ void TIME_CORRECTOR::correct() {
         break;
       }
     }
-    
-    Serial.println(time[0]);
-    Serial.println(time[1]);
-    Serial.println(time[2]);
-    Serial.println(time[3]);
-    Serial.println(time[4]);
-    Serial.println(time[5]);
 
     if (
          time[0] >= 0 && time[0] <= 50
