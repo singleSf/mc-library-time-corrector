@@ -26,9 +26,13 @@ void TIME_CORRECTOR::correct() {
     string.trim();
 
     byte countTime       = 6;
-    word time[countTime] = {0};
+    byte time[countTime] = {};
     byte timeCursor      = 0;
     byte step            = 2;
+
+    for(byte i = 0; i < countTime; i++){
+      time[i] = (byte)-1; // overflow
+    }
 
     for (byte i = 0; i < countTime * 2; i += step) {
       String separator = string.substring(step, step + 1);
@@ -38,7 +42,17 @@ void TIME_CORRECTOR::correct() {
       time[timeCursor++] = string.substring(0, step).toInt();
 
       string = string.substring(step + 1);
+      if(!string.length()){
+        break;
+      }
     }
+    
+    Serial.println(time[0]);
+    Serial.println(time[1]);
+    Serial.println(time[2]);
+    Serial.println(time[3]);
+    Serial.println(time[4]);
+    Serial.println(time[5]);
 
     if (
          time[0] >= 0 && time[0] <= 50
