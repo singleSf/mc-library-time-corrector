@@ -31,18 +31,22 @@ void TIME_CORRECTOR::correct() {
     byte step            = 2;
 
     for (byte i = 0; i < countTime * 2; i += step) {
+      String separator = string.substring(step, step + 1);
+      if (this->_SEPARATORS.indexOf(separator) == -1) {
+        break;
+      }
       time[timeCursor++] = string.substring(0, step).toInt();
 
       string = string.substring(step + 1);
     }
 
     if (
-         time[0] >= 20 && time[0] <= 50
-      && time[1] >  0  && time[1] <= 12
-      && time[2] >  0  && time[2] <= 31
-      && time[3] >= 0  && time[3] <= 23
-      && time[4] >= 0  && time[4] <= 59
-      && time[5] >= 0  && time[5] <= 59
+         time[0] >= 0 && time[0] <= 50
+      && time[1] >  0 && time[1] <= 12
+      && time[2] >  0 && time[2] <= 31
+      && time[3] >= 0 && time[3] <= 23
+      && time[4] >= 0 && time[4] <= 59
+      && time[5] >= 0 && time[5] <= 59
     ) {
       this->adjust(DateTime(time[0], time[1], time[2], time[3], time[4], time[5]));
 

@@ -10,6 +10,8 @@ using namespace std;
 
 class TIME_CORRECTOR : public RTC_DS1307 {
   private:
+    const String _SEPARATORS = "-/:_ ";
+
     HardwareSerial *__streamCorrector;
 
     String _addZero(byte);
